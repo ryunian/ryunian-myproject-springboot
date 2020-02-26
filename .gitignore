@@ -4,3 +4,5 @@
 application-oauth.properties
 application-smtp.properties
 application-real-db.properties
+build
+out
