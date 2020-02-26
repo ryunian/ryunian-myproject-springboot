@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/layout/head"></head>
+
+<body>
+<!-- Navigation -->
+<th:block th:replace="layout/navigation"></th:block>
+<!-- Page Header -->
+<header th:replace="layout/header"></header>
+
+<!-- Main Content -->
+
+<div class="container">
+    <h3>글쓰기</h3><br>
+    <form>
+        <div class="mb-3">
+            <label for="title">제목</label>
+            <input type="text" class="form-control" id="title">
+        </div>
+        <div class="mb-3">
+            <label for="author">작성자</label>
+            <input type="text" class="form-control" id="author" th:value="${username}" readonly>
+        </div>
+        <div class="mb-3">
+            <label for="content">내용</label>
+            <textarea class="form-control" rows="5" id="content"></textarea>
+        </div>
+    </form>
+    <button type="button" class="btn btn-primary" id="btn-save">작성</button>
+    <a class="btn btn-primary" href="/board">취소</a>
+</div>
+
+<hr>
+
+<!-- Footer -->
+<th:block th:replace="layout/footer"></th:block>
+<script src="js/board.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/head"></head>
+
+<body>
+<!-- Navigation -->
+<th:block th:replace="layout/navigation"></th:block>
+<!-- Page Header -->
+<header th:replace="layout/header"></header>
+
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="post-preview">
+                <h2>Welcome My Blog !</h2>
+                <p>이 블로그는 springboot로 제작된 포트폴리오용 블로그입니다.
+                    <br><br>Board은 글쓰기,수정,삭제,목록,페이징을 구현한 페이지입니다.
+                    <br>Guest은 계층형댓글을 남길수있는 페이지입니다.
+                    <br>Contact은 저의 이메일로 간단하게 이메일을 보낼 수 있는 페이지입니다.
+                    <br>login은 네이버,구글,일반로그인을 할 수 있는 페이지입니다.<br>로그인 시 logout버튼으로 바뀝니다.
+                    <br><br>부족하지만 방문해주신 분들께 정말 감사합니다.</p>
+            </div>
+            <hr style="margin-top:50px;margin-bottom:50px">
+            <div class="post-preview">
+                <h2>Skills</h2>
+                <h5 style="margin-top:15px">- Language</h5>
+                <img src="/img/logo/java.png" alt="" class="index-img">
+                <img src="/img/logo/html.png" alt="" class="index-img">
+                <img src="/img/logo/css.png" alt="" class="index-img">
+                <img src="/img/logo/javascript.png" alt="" class="index-img">
+                <h5 style="margin-top:15px">- FrameWork</h5>
+                <img src="/img/logo/springboot.png" alt="" class="index-img" style="width:150px">
+                <h5 style="margin-top:15px">- Library</h5>
+                <img src="/img/logo/bootstrap.png" alt="" class="index-img">
+                <img src="/img/logo/jquery.png" alt="" class="index-img">
+                <img src="/img/logo/jpa.png" alt="" class="index-img">
+                <h5 style="margin-top:15px">- Etc</h5>
+                <img src="/img/logo/thymeleaf.png" alt="" class="index-img" style="width:150px;height:80px;margin:0">
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<!-- Main Content END -->
+
+<!-- Footer -->
+<th:block th:replace="layout/footer"></th:block>
+
+</body>
+</html>

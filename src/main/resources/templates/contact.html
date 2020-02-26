@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/head"></head>
+
+<body>
+<!-- Navigation -->
+<th:block th:replace="layout/navigation"></th:block>
+<!-- Page Header -->
+<header th:replace="layout/header"></header>
+
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <h3>메일보내기</h3>
+        <br>
+        <form name="sentMessage">
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Email Address</label>
+              <input type="email" class="form-control" placeholder="Email Address" id="email" required data-validation-required-message="Please enter your email address.">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Title</label>
+              <input type="text" class="form-control" placeholder="Title" id="title" required data-validation-required-message="Please enter title.">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Content</label>
+              <textarea rows="5" class="form-control" placeholder="Content" id="content" required data-validation-required-message="Please enter a message."></textarea>
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <br>
+          <div id="success"></div>
+          <div class="form-group">
+            <button type="button" class="btn btn-primary" onclick="sendEmail()">Send</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+<!-- Footer -->
+<th:block th:replace="layout/footer"></th:block>
+<script src="js/contact.js"></script>
+</body>
+
+</html>

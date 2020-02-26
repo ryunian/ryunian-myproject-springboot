@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/layout/head"></head>
+
+<body>
+<!-- Navigation -->
+<th:block th:replace="layout/navigation"></th:block>
+<!-- Page Header -->
+<header th:replace="layout/header"></header>
+
+<!-- Main Content -->
+
+<div class="container">
+    <h3>회원가입</h3><br>
+    <form class="user">
+        <div class="col-xs-3">
+            <label for="id">ID : </label>
+            <input type="text" class="form-control input-sm" id="id">
+            <button type="button"class="btn btn-info btn-xs" style="padding:7px 12px;margin:5px" id="btn-overlap">중복확인</button><br>
+        </div>
+
+        <div class="mb-3">
+            <label for="pw">비밀번호 : </label>
+            <input type="password" class="form-control" id="pw">
+        </div>
+        <div class="mb-3">
+            <label for="pwCheck">비밀번호 확인 : </label>
+            <input type="password" class="form-control" id="pwCheck">
+        </div>
+        <div class="mb-3">
+            <label for="name">이름 : </label>
+            <input type="text" class="form-control" id="name">
+        </div>
+        <div class="mb-3">
+            <label for="email">E-mail : </label>
+            <input type="text" class="form-control" id="email">
+        </div>
+    </form>
+    <button type="button" class="btn btn-primary" id="btn-register">가입하기</button>
+    <a role="button" class="btn btn-danger" href="/loginPage">취소</a>
+</div>
+
+<hr>
+
+<!-- Footer -->
+<th:block th:replace="layout/footer"></th:block>
+<script src="js/register.js"></script>
+</body>
+
+</html>

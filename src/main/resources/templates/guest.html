@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/head"></head>
+
+<body>
+<!-- Navigation -->
+<th:block th:replace="layout/navigation"></th:block>
+<!-- Page Header -->
+<header th:replace="layout/header"></header>
+<link href="css/commentDesign.css" rel="stylesheet">
+
+
+<!-- comment form -->
+<div class="container">
+    <h3>메모</h3>
+    <br>
+    <form class="form-block" action="/guest" th:action="@{/api/comment}" th:object="${form}" th:method="post">
+        <div class="row" style="padding:10px;background-color:#E6E6E6;border-radius:10px;">
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group fl_icon">
+                    <div class="icon"><i class="fa fa-user"></i></div>
+                    <input class="form-input" type="text" placeholder="닉네임" th:field="*{author}">
+                </div>
+            </div>
+            <!--  비밀번호 기능 넣을시 추가 -->
+            <!--                <div class="col-xs-12 col-sm-6 fl_icon">-->
+            <!--                    <div class="form-group fl_icon">-->
+            <!--                        <div class="icon"><i class="fa fa-envelope-o"></i></div>-->
+            <!--                        <input class="form-input" type="text" placeholder="비밀번호" th:field="*{password}">-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <div class="col-xs-12 col-sm-12">
+                <div class="form-group">
+                    <textarea class="form-input" required="" placeholder="Your text" th:field="*{content}"></textarea>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" style="color: white;">submit</button>
+        </div>
+    </form>
+    <br>
+    <hr>
+    <br>
+</div>
+<!-- Comment-->
+<div class="container">
+    <h1 class="comments-title" th:text="'Comments ('+${#lists.size(comment)} +')'"></h1>
+    <th:bock th:each="c : ${comment}">
+        <div class="row" style="margin-bottom:20px;">
+            <!--    indent에 따라 들여쓰기기능   -->
+            <th:block th:each="n : ${#numbers.sequence(0,{c.indent})}">
+                <div th:if="${n != 0}" class="col-sm-1"></div>
+            </th:block>
+            <div class="col-sm-1" style="max-width:6%;padding-left:5px;padding-right:5px;">
+                <img src="/img/userImage.png" alt="" class="be-ava-comment">
+            </div>
+            <div class="col-sm">
+                <div class="be-comment-text">
+                    <div class="comment-author">
+                        <div th:text="${c.author}"></div>
+                        <button type="button" class="btnReply"
+                            th:id="'btnReply_'+${c.id}+'_'+${c.grp}+'_'+${c.step}+'_'+${c.indent}">답글</button>
+                    </div>
+                    <hr>
+                    <a th:text="${c.content}"></a>
+                </div>
+            </div>
+        </div>
+        <div th:id="'commentReply_'+${c.id}" class="reply" style="display:none;"></div>
+    </th:bock>
+</div>
+<hr>
+<!-- Footer -->
+<th:block th:replace="layout/footer"></th:block>
+<script src="js/guest.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+

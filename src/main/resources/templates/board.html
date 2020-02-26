@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/head"></head>
+
+<body>
+<!-- Navigation -->
+<th:block th:replace="layout/navigation"></th:block>
+<!-- Page Header -->
+<header th:replace="layout/header"></header>
+
+<!-- Main Content -->
+<div class="container">
+    <h3>게시판</h3><br>
+    <!-- 테이블-->
+    <div class="row" style="min-height:300px">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>번호</th>
+                <th style="width:60%">제목</th>
+                <th>작성자</th>
+                <th>날짜</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <th:block th:each="x : ${posts}">
+                <tr>
+                    <th th:text=" ${x.id}"></th>
+                    <th>
+                        <a th:href="@{/contentView(id=${x.id})}" th:text="${x.title}"></a>
+                    </th>
+                    <th th:text="${x.author}"></th>
+                    <th th:text="${x.date}"></th>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+        <!-- 게시글이 없을시 문구-->
+        <div style="padding-left:40%;"
+             th:if="${#lists.isEmpty(posts)}">게시글이 없습니다
+        </div>
+    </div>
+
+
+    <br>
+
+    <!-- pagination-->
+    <div class="row" th:unless="${#lists.isEmpty(posts)}">
+        <div class="col">
+            <ul class="pagination justify-content-center">
+                <li class="page-item" th:if="${page.page} != 1"><a class="page-link"
+                                                                   th:href="@{/board(id=${page.page-1})}"> Previous</a>
+                </li>
+                <th:block th:each="num : ${#numbers.sequence({page.startPage},{page.endPage})}">
+                    <li class="page-item"><a class="page-link" th:href="@{/board(id=${num})}" th:text="${num}"></a></li>
+                </th:block>
+                <li class="page-item" th:if="${page.page} != ${page.endPage}"><a class="page-link"
+                                                                                 th:href="@{/board(id=${page.page+1})}">Next</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 글쓰기버튼-->
+    <a role="button" class="btn btn-primary" href="/write">글쓰기</a>
+
+</div>
+
+<hr>
+
+<!-- Footer -->
+<th:block th:replace="layout/footer"></th:block>
+
+</body>
+
+</html>

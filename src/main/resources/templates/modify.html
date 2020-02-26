@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/layout/head"></head>
+
+<body>
+<!-- Navigation -->
+<th:block th:replace="/layout/navigation"></th:block>
+<!-- Page Header -->
+<header th:replace="/layout/header"></header>
+
+<!-- Main Content -->
+
+<div class="container">
+    <h3>글수정</h3><br>
+    <div class="form-group">
+        <label for="id">ID : </label>
+        <input type="text" class="form-control" id="id" th:value="${posts.id}" readonly>
+    </div>
+    <div class="form-group">
+        <label>작성자 : </label>
+        <input type="text" class="form-control" th:value="${posts.author}" readonly>
+    </div>
+    <div class="form-group">
+        <label>날짜 : </label>
+        <input type="text" class="form-control" th:value="${posts.date}" readonly>
+    </div>
+    <div class="form-group">
+        <label for="title">제목 : </label>
+        <input type="text" class="form-control" id="title" th:value="${posts.title}">
+    </div>
+    <div class="form-group">
+        <label for="content">내용 : </label>
+        <textarea rows="5" class="form-control" id="content" th:text="${posts.content}"></textarea>
+    </div>
+    <button type="button" class="btn btn-primary" id="btn-update">수정</button>
+    <a class="btn btn-primary" href="/board">목록</a>
+<!--    th:href="@{/board(id=1)-->
+</div>
+
+<hr>
+
+<!-- Footer -->
+<th:block th:replace="layout/footer"></th:block>
+<script src="js/board.js"></script>
+</body>
+
+</html>
