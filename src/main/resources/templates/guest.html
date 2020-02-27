@@ -43,8 +43,8 @@
 </div>
 <!-- Comment-->
 <div class="container">
-    <h1 class="comments-title" th:text="'Comments ('+${#lists.size(Comment)} +')'"></h1>
-    <th:bock th:each="c : ${Comment}">
+    <h1 class="comments-title" th:text="'Comments ('+${#lists.size(comment)} +')'"></h1>
+    <th:bock th:each="c : ${comment}">
         <div class="row" style="margin-bottom:20px;">
             <!--    indent에 따라 들여쓰기기능   -->
             <th:block th:each="n : ${#numbers.sequence(0,{c.indent})}">

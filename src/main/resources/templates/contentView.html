@@ -15,26 +15,26 @@
     <h3>내용</h3><br>
     <div class="form-group">
         <label for="id">ID : </label>
-        <input type="text" class="form-control" id="id" th:value="${Posts.id}" readonly>
+        <input type="text" class="form-control" id="id" th:value="${posts.id}" readonly>
     </div>
 
     <div class="form-group">
         <label>작성자 : </label>
-        <input type="text" class="form-control" th:value="${Posts.author}" readonly>
+        <input type="text" class="form-control" th:value="${posts.author}" readonly>
     </div>
     <div class="form-group">
         <label>날짜 : </label>
-        <input type="text" class="form-control" th:value="${Posts.date}" readonly>
+        <input type="text" class="form-control" th:value="${posts.date}" readonly>
     </div>
     <div class="form-group">
         <label>제목 : </label>
-        <input type="text" class="form-control" th:value="${Posts.title}" readonly>
+        <input type="text" class="form-control" th:value="${posts.title}" readonly>
     </div>
     <div class="form-group">
         <label>내용 : </label>
-        <textarea rows="5" class="form-control" th:text="${Posts.content}" readonly></textarea>
+        <textarea rows="5" class="form-control" th:text="${posts.content}" readonly></textarea>
     </div>
-    <a role="button" th:href="@{/modify(id=${Posts.id})}" class="btn btn-primary">수정</a>
+    <a role="button" th:href="@{/modify(id=${posts.id})}" class="btn btn-primary">수정</a>
     <button type="button" class="btn btn-primary" id="btn-delete">삭제</button>
     <a class="btn btn-primary" href="/board">목록</a>
 </div>

@@ -25,7 +25,7 @@
             </thead>
 
             <tbody>
-            <th:block th:each="x : ${Posts}">
+            <th:block th:each="x : ${posts}">
                 <tr>
                     <th th:text=" ${x.id}"></th>
                     <th>
@@ -39,7 +39,7 @@
         </table>
         <!-- 게시글이 없을시 문구-->
         <div style="padding-left:40%;"
-             th:if="${#lists.isEmpty(Posts)}">게시글이 없습니다
+             th:if="${#lists.isEmpty(posts)}">게시글이 없습니다
         </div>
     </div>
 
@@ -47,7 +47,7 @@
     <br>
 
     <!-- pagination-->
-    <div class="row" th:unless="${#lists.isEmpty(Posts)}">
+    <div class="row" th:unless="${#lists.isEmpty(posts)}">
         <div class="col">
             <ul class="pagination justify-content-center">
                 <li class="page-item" th:if="${page.page} != 1"><a class="page-link"
