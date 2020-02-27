@@ -14,19 +14,15 @@ cache:
 
 script: "./gradlew clean build"
 
-before_install:
-  - chmod +x gradlew
-
 before_deploy:
-  - zip -r myproject *
+  - zip -r ryunian-myproject-springboot *
   - mkdir -p deploy
-  - mv myproject.zip deploy/myproject.zip
+  - mv ryunian-myproject-springboot.zip deploy/ryunian-myproject-springboot.zip
 
 deploy:
   - provider: s3
     access_key_id: $AWS_ACCESS_KEY
     secret_access_key: $AWS_SECRET_KEY
-
     bucket: ryunian-springboot-build
     region: ap-northeast-2
     skip_cleanup: true
@@ -37,13 +33,11 @@ deploy:
   - provider: codedeploy
     access_key_id: $AWS_ACCESS_KEY
     secret_access_key: $AWS_SECRET_KEY
-
     bucket: ryunian-springboot-build
-    key: myproject.zip
+    key: ryunian-myproject-springboot.zip
     bundle_type: zip
     application: ryunian
     deployment_group: ryunian-myproject-springboot-group
-
     region: ap-northeast-2
     wait-until-deployed: true
 
