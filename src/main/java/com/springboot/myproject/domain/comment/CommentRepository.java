@@ -17,10 +17,10 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
     void reply(String author, String content, int grp, int step, int indent);
 
     @Modifying
-    @Query(value = "UPDATE comment set step = step+1 where grp = ?1 and step > ?2", nativeQuery = true)
+    @Query(value = "UPDATE Comment set step = step+1 where grp = ?1 and step > ?2", nativeQuery = true)
     void stepModify(int grp, int step);
 
-    @Query(value = "SELECT * FROM comment ORDER BY grp DESC, step ASC", nativeQuery = true)
+    @Query(value = "SELECT * FROM Comment ORDER BY grp DESC, step ASC", nativeQuery = true)
     List<Comment> list();
 }
 
