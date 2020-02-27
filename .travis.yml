@@ -32,7 +32,7 @@ deploy:
     skip_cleanup: true
     acl: private
     local_dir: deploy
-    wait-intil-deployed: true
+    wait-until-deployed: true
 
   - provider: codedeploy
     access_key_id: $AWS_ACCESS_KEY
@@ -40,7 +40,6 @@ deploy:
 
     bucket: ryunian-springboot-build
     key: myproject.zip
-
     bundle_type: zip
     application: ryunian
     deployment_group: ryunian-myproject-springboot-group
