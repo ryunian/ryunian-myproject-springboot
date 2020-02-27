@@ -73,7 +73,7 @@ public class IndexController {
         if(user != null){
             model.addAttribute("username", user.getName());
         }
-        return "/write";
+        return "write";
     }
 
     // 게시글
