@@ -102,6 +102,7 @@ public class IndexController {
         return "loginPage";
     }
 
+
     // 회원가입
     @GetMapping("/register")
     public String register(){
