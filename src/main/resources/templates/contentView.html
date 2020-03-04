@@ -34,8 +34,10 @@
         <label>내용 : </label>
         <textarea rows="5" class="form-control" th:text="${posts.content}" readonly></textarea>
     </div>
-    <a role="button" th:href="@{/modify(id=${posts.id})}" class="btn btn-primary">수정</a>
-    <button type="button" class="btn btn-primary" id="btn-delete">삭제</button>
+    <th:block th:if="${posts.author.equals(username)}">
+        <a role="button" th:href="@{/modify(id=${posts.id})}" class="btn btn-primary">수정</a>
+        <button type="button" class="btn btn-primary" id="btn-delete">삭제</button>
+    </th:block>
     <a class="btn btn-primary" href="/board">목록</a>
 </div>
 

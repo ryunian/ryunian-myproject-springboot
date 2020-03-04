@@ -35,6 +35,9 @@
                                         <input type="password" class="form-control form-control-user"
                                                 th:field="*{pw}" placeholder="Password">
                                     </div>
+                                    <th:block th:if="${param.error}" >
+                                        <span style="font-size:15px;color:red">Invalid username and password.</span>
+                                    </th:block>
                                     <br>
                                     <button type="submit" class="btn btn-outline-primary btn-user btn-block">
                                         Login
