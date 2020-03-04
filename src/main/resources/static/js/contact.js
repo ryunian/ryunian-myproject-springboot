@@ -4,6 +4,9 @@ function sendEmail(){
         title: $('#title').val(),
         content : $('#content').val()
     };
+    $('#email-btn').attr('disabled', true);
+    $('#email-btn').text('메일을 보내는 중입니다...');
+    $('#email-span').css('display', 'inline-block');
     $.ajax({
         type: 'POST',
         url: '/api/mail',

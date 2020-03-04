@@ -41,7 +41,10 @@
           <br>
           <div id="success"></div>
           <div class="form-group">
-            <button type="button" class="btn btn-primary" onclick="sendEmail()">Send</button>
+            <button type="button" class="btn btn-primary" id="email-btn" onclick="sendEmail()">
+              <span class="spinner-border spinner-border-sm" id="email-span" role="status" aria-hidden="true" style="display:none"></span>
+              Send
+            </button>
           </div>
         </form>
       </div>
