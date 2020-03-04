@@ -1,4 +1,5 @@
 var idcheck = false;
+var pwcheck = false;
 var main = {
     init : function () {
         var _this = this;
@@ -6,12 +7,39 @@ var main = {
             _this.overlap();
         });
         $('#btn-register').on('click', function(){
-            if(idcheck){
+            if(idcheck && _this.validationCheck()){
                 _this.register();
-            }else{
+            }else if(!idcheck){
                 alert('ID 중복체크를 해주세요');
             }
         });
+    },
+    validationCheck : function() {
+        var idCheck = /^[0-9a-zA-Z]{5,15}$/;
+        if(!$('#id').val()){
+            alert('아이디를 입력해주세요');
+            return false;
+        }else if(!idCheck.test($('#id').val())){
+            alter('아이디는 5자~15자리 사이로 만들어주세요.');
+            return false;
+        }else if(!$('#pw').val()){
+            alert('비밀번호를 입력해주세요');
+            return false;
+        }else if($('#pw').val().length > 15 || $('#pw').val().length < 5){
+            alert('비밀번호는 5 ~ 15 자리로 입력해주세요');
+            return false;
+        }else if($('#pw').val() != $('#pwCheck').val()){
+            alert('비밀번호가 일치하지 않습니다.');
+            return false;
+        }else if(!$('#name').val()){
+            alert('이름을 입력해주세요');
+            return false;
+        }else if(!$('#email').val()){
+            alert('이메일을 입력해주세요');
+            return false;
+        }else{
+            return true;
+        }
     },
     overlap : function() {
         var id = $('#id').val();
