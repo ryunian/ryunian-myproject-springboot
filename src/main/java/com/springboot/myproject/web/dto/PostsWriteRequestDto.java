@@ -11,14 +11,12 @@ public class PostsWriteRequestDto {
     private String title;
     private String content;
     private String author;
-    private boolean isfile;
 
     @Builder
-    public PostsWriteRequestDto(String title, String content, String author, boolean isfile){
+    public PostsWriteRequestDto(String title, String content, String author){
         this.title = title;
         this.content = content;
         this.author = author;
-        this.isfile = isfile;
     }
 
     public Posts toEntity(){
@@ -26,7 +24,6 @@ public class PostsWriteRequestDto {
                 .title(title)
                 .content(content)
                 .author(author)
-                .isfile(isfile)
                 .build();
     }
 }

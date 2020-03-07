@@ -22,9 +22,7 @@ public class PostsApiController {
     public Long save(@RequestParam("title") String title, @RequestParam("content") String content,
                     @RequestParam("author") String author, @RequestParam("files") MultipartFile[] files) throws IOException {
 
-        boolean isfile = false;
-        if(files.length > 0) isfile = true;
-        PostsWriteRequestDto writeRequestDto = new PostsWriteRequestDto(title,content, author, isfile);
+        PostsWriteRequestDto writeRequestDto = new PostsWriteRequestDto(title,content, author);
         return postsService.save(writeRequestDto, files);
     }
 
