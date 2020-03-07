@@ -29,7 +29,7 @@ public class PostsService {
     public Long save(PostsWriteRequestDto postsWriteRequestDto, MultipartFile[] files) throws IOException {
         Long id = postsRepository.save(postsWriteRequestDto.toEntity()).getId();
 //        String baseDir = "D:\\upload\\";
-        String baseDir = "/upload/";
+        String baseDir = "~/upload/";
         for(MultipartFile file : files){
             String storeFileName = UUID.randomUUID().toString() + file.getOriginalFilename();
             file.transferTo(new File(baseDir + storeFileName));
