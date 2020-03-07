@@ -6,6 +6,9 @@ import com.springboot.myproject.web.dto.PostsUpdateRequestDto;
 import com.springboot.myproject.web.dto.PostsWriteRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 
 // CRUD
@@ -16,8 +19,13 @@ public class PostsApiController {
 
     // 게시글 등록
     @PostMapping("/api/posts")
-    public Long save(@RequestBody PostsWriteRequestDto writeRequestDto){
-        return postsService.save(writeRequestDto);
+    public Long save(@RequestParam("title") String title, @RequestParam("content") String content,
+                    @RequestParam("author") String author, @RequestParam("files") MultipartFile[] files) throws IOException {
+
+        boolean isfile = false;
+        if(files.length > 0) isfile = true;
+        PostsWriteRequestDto writeRequestDto = new PostsWriteRequestDto(title,content, author, isfile);
+        return postsService.save(writeRequestDto, files);
     }
 
     // 게시글 보기
@@ -37,4 +45,14 @@ public class PostsApiController {
         postsService.delete(id);
         return id;
     }
+
+//    @PostMapping("/api/posts/upload")
+//    public void upload(@RequestPart MultipartFile files){
+//        try{
+//            String baseDir = "D:\\temp";
+//            files.transferTo(new File(baseDir + "\\"+files.getOriginalFilename()));
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+//    }
 }

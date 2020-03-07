@@ -26,7 +26,18 @@
             <label for="content">내용</label>
             <textarea class="form-control" rows="5" id="content"></textarea>
         </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+            </div>
+            <div class="custom-file">
+                <input multiple="multiple" type="file" class="custom-file-input" id="files"
+                       aria-describedby="inputGroupFileAddon01">
+                <label class="custom-file-label" for="files">Choose file</label>
+            </div>
+        </div>
     </form>
+    <br>
     <button type="button" class="btn btn-primary" id="btn-save">작성</button>
     <a class="btn btn-primary" href="/board">취소</a>
 </div>

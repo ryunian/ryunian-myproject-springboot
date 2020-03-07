@@ -34,6 +34,14 @@
         <label>내용 : </label>
         <textarea rows="5" class="form-control" th:text="${posts.content}" readonly></textarea>
     </div>
+    <th:block th:unless="${#lists.isEmpty(posts.list)}">
+        <div>첨부파일 :</div>
+        <th:block th:each="x : ${posts.list}">
+            <a href="#" th:text="${x.originalFileName}"></a>
+            <br>
+        </th:block>
+    </th:block>
+    <br>
     <th:block th:if="${posts.author.equals(username)}">
         <a role="button" th:href="@{/modify(id=${posts.id})}" class="btn btn-primary">수정</a>
         <button type="button" class="btn btn-primary" id="btn-delete">삭제</button>

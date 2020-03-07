@@ -1,5 +1,7 @@
 package com.springboot.myproject.service;
 
+import com.springboot.myproject.domain.fileInfo.FileInfo;
+import com.springboot.myproject.domain.fileInfo.FileInfoRepository;
 import com.springboot.myproject.domain.posts.Posts;
 import com.springboot.myproject.domain.posts.PostsRepository;
 import com.springboot.myproject.web.dto.*;
@@ -8,19 +10,33 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class PostsService {
     private final PostsRepository postsRepository;
+    private final FileInfoRepository fileInfoRepository;
 
     // 게시글 등록
     @Transactional
-    public Long save(PostsWriteRequestDto postsWriteRequestDto){
-        return postsRepository.save(postsWriteRequestDto.toEntity()).getId();
+    public Long save(PostsWriteRequestDto postsWriteRequestDto, MultipartFile[] files) throws IOException {
+        Long id = postsRepository.save(postsWriteRequestDto.toEntity()).getId();
+//        String baseDir = "D:\\upload\\";
+        String baseDir = "/upload/";
+        for(MultipartFile file : files){
+            String storeFileName = UUID.randomUUID().toString() + file.getOriginalFilename();
+            file.transferTo(new File(baseDir + storeFileName));
+            FileInfoWriteDto fileInfoWriteDto = new FileInfoWriteDto(id,file.getOriginalFilename(),storeFileName);
+            fileInfoRepository.save(fileInfoWriteDto.toEntity());
+        }
+        return id;
     }
 
     // 게시글 리스트
@@ -33,8 +49,12 @@ public class PostsService {
     // 게시글 보기
     @Transactional
     public PostsResponseDto findById(Long id){
+        System.out.println("run 1");
         Posts entity = postsRepository.findById(id).orElseThrow(() ->new IllegalArgumentException("해당 사용자가 없습니다. "+ id));
-        return new PostsResponseDto(entity);
+        System.out.println("run 2");
+        List<FileInfo> list = fileInfoRepository.findByBoardNum(id);
+        System.out.println("run 3");
+        return new PostsResponseDto(entity,list);
     }
 
     // 게시글 수정
