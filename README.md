@@ -30,7 +30,7 @@
 
 HTML CSS Javascript Java
 
-Bootstrap Jquery 
+Bootstrap JQuery 
 
 Springboot Springsecurity Oauth2 JPA Thymeleaf lombok
 
