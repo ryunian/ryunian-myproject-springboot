@@ -27,6 +27,7 @@
 아쉬운 점으로는 숙제로 남게된 테스트 코드와 디자인적으로 아쉬웠다는 점입니다. 이 프로젝트를 교훈삼아 여러가지 기술을 보완 및 습득해야할 계기가 되었습니다.
 
 - 사용 기술 (언어, 라이브러리 등등)
+
 HTML CSS Javascript Java
 Bootstrap Jquery 
 Springboot Springsecurity Oauth2 JPA Thymeleaf lombok
