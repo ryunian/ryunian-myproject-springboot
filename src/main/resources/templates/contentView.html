@@ -37,7 +37,7 @@
     <th:block th:unless="${#lists.isEmpty(posts.list)}">
         <div>첨부파일 :</div>
         <th:block th:each="x : ${posts.list}">
-            <a href="#" th:text="${x.originalFileName}"></a>
+            <a th:href="@{/api/posts/download(id=${x.id})}" th:text="${x.originalFileName}"></a>
             <br>
         </th:block>
     </th:block>

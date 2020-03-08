@@ -49,11 +49,8 @@ public class PostsService {
     // 게시글 보기
     @Transactional
     public PostsResponseDto findById(Long id){
-        System.out.println("run 1");
         Posts entity = postsRepository.findById(id).orElseThrow(() ->new IllegalArgumentException("해당 사용자가 없습니다. "+ id));
-        System.out.println("run 2");
         List<FileInfo> list = fileInfoRepository.findByBoardNum(id);
-        System.out.println("run 3");
         return new PostsResponseDto(entity,list);
     }
 
@@ -72,11 +69,16 @@ public class PostsService {
         postsRepository.delete(posts);
     }
 
-    //페이지 정보
+    // 페이지 정보
     @Transactional
     public PaginationDto page(int page){
         Long totalCount = postsRepository.totalCount();
         PaginationDto paginationDto = PaginationDto.builder().totalCount(Math.toIntExact(totalCount)).page(page).build();
         return paginationDto;
+    }
+
+    public PostsDownloadInfoDto fileInfo(Long id) {
+        FileInfo entity = fileInfoRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 파일이 없습니다. "+id));
+        return new PostsDownloadInfoDto(entity);
     }
 }

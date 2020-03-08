@@ -1,6 +1,7 @@
 package com.springboot.myproject.web;
 
 import com.springboot.myproject.service.PostsService;
+import com.springboot.myproject.web.dto.PostsDownloadInfoDto;
 import com.springboot.myproject.web.dto.PostsResponseDto;
 import com.springboot.myproject.web.dto.PostsUpdateRequestDto;
 import com.springboot.myproject.web.dto.PostsWriteRequestDto;
@@ -8,7 +9,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 
 
 // CRUD
@@ -44,13 +49,25 @@ public class PostsApiController {
         return id;
     }
 
-//    @PostMapping("/api/posts/upload")
-//    public void upload(@RequestPart MultipartFile files){
-//        try{
-//            String baseDir = "D:\\temp";
-//            files.transferTo(new File(baseDir + "\\"+files.getOriginalFilename()));
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
-//    }
+    // 파일다운로드
+    @GetMapping("/api/posts/download")
+    public void download(@RequestParam("id") Long id, HttpServletResponse response) throws IOException {
+        PostsDownloadInfoDto dto = postsService.fileInfo(id);
+        response.setContentType("application/octet-stream");
+        String originalFileName = new String(dto.getOriginalFileName().getBytes("UTF-8"), "iso-8859-1");
+        // 파일명 지정
+        response.setHeader("Content-Disposition", "attachment; filename=\""+originalFileName+"\"");
+        OutputStream os = response.getOutputStream();
+//        String path = "D:/upload";
+        String path = "/home/ec2-user/upload";
+        // 실제파일 가지고 오기
+        FileInputStream fis = new FileInputStream(path + File.separator + dto.getStoredFileName());
+        int n = 0;
+        byte[] b = new byte[512];
+        while((n = fis.read(b)) != -1 ) {
+            os.write(b, 0, n);
+        }
+        fis.close();
+        os.close();
+    }
 }
