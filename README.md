@@ -1,5 +1,5 @@
 # 사이트 주소
-ec2-13-125-131-202.ap-northeast-2.compute.amazonaws.com
+http://ec2-13-125-131-202.ap-northeast-2.compute.amazonaws.com
 
 (현재 도메인 생성 중입니다.)
 
