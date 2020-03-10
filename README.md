@@ -1,3 +1,7 @@
+# 사이트 주소
+ec2-13-125-131-202.ap-northeast-2.compute.amazonaws.com
+(현재 도메인 생성 중입니다.)
+
 # springboot를 이용한 블로그 만들기 후기
 
 이 프로젝트는 혼자서 진행하였습니다.
