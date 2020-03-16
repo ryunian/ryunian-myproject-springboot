@@ -6,7 +6,7 @@ HTML CSS Javascript Java
 
 Bootstrap JQuery 
 
-Springboot Springsecurity Oauth2 JPA Thymeleaf
+Springboot Security Oauth2 JPA Thymeleaf
 
 AWS TravisCI NginX MariaDB
 
