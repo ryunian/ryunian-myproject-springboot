@@ -3,8 +3,11 @@ www.ryunian.com
 
 # 사용 기술
 HTML CSS Javascript Java
+
 Bootstrap JQuery 
+
 Springboot Springsecurity Oauth2 JPA Thymeleaf
+
 AWS TravisCI NginX MariaDB
 
 
