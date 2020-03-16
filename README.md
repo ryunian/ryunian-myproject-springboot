@@ -1,7 +1,12 @@
 # 사이트 주소
-http://ec2-13-125-131-202.ap-northeast-2.compute.amazonaws.com
+www.ryunian.com
 
-(현재 도메인 생성 중입니다.)
+# 사용 기술
+HTML CSS Javascript Java
+Bootstrap JQuery 
+Springboot Springsecurity Oauth2 JPA Thymeleaf
+AWS TravisCI NginX MariaDB
+
 
 # springboot를 이용한 블로그 만들기 후기
 
@@ -29,14 +34,3 @@ http://ec2-13-125-131-202.ap-northeast-2.compute.amazonaws.com
 그리고 저는 테스트 코드에 대해 중요성을 모르고 프로젝트를 진행하였는데 매번 코드를 작성 및 수정할때마다 프로그램을 실행한뒤 API테스트 도구로 HTTP요청하고 요청결과를 검증하는 식으로 하였는데 이 작업이 얼마나 멍청한지 알게되었습니다. 결국 테스트코드 작성은 숙제로 남게 되었습니다.
 
 아쉬운 점으로는 숙제로 남게된 테스트 코드와 디자인적으로 아쉬웠다는 점입니다. 이 프로젝트를 교훈삼아 여러가지 기술을 보완 및 습득해야할 계기가 되었습니다.  
-
-
-- 사용 기술
-
-HTML CSS Javascript
-
-Bootstrap JQuery 
-
-Springboot Springsecurity Oauth2 JPA Thymeleaf
-
-AWS TravisCI NginX MariaDB
