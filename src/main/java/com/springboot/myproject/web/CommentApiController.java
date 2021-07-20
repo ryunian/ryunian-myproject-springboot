@@ -18,8 +18,6 @@ public class CommentApiController {
 
     @PostMapping("/api/comment")
     public ModelAndView write(@Valid CommentWriteDto commentWriteDto){
-        System.out.println("Author : "+commentWriteDto.getAuthor());
-        System.out.println("Content : "+commentWriteDto.getContent());
         commentService.save(commentWriteDto);
         ModelAndView mav = new ModelAndView("redirect:/guest");
         return mav;
@@ -27,9 +25,6 @@ public class CommentApiController {
 
     @PostMapping("/api/reply")
     public boolean reply(@RequestBody CommentReplyDto commentReplyDto){
-        System.out.println("Run reply");
-        System.out.println(commentReplyDto.getAuthor());
-        System.out.println(commentReplyDto.getContent());
         commentService.reply(commentReplyDto);
         return true;
     }

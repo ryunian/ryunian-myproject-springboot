@@ -22,9 +22,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String username = authentication.getName();
-        System.out.println("username = " +username);
         String password = (String) authentication.getCredentials();
-        System.out.println("password = " + password);
         LoginResponseDto responseDto = registerService.login(username);
         if (responseDto == null) {
             throw new BadCredentialsException("Login Error !!");

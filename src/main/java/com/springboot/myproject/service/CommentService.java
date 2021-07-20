@@ -25,7 +25,6 @@ public class CommentService {
     @Transactional
     public void reply(CommentReplyDto replyDto) {
         stepModify(replyDto);
-        System.out.println("indent = " + replyDto.getIndent());
         commentRepository.reply(replyDto.getAuthor(),replyDto.getContent(),replyDto.getGrp(),replyDto.getStep()+1,replyDto.getIndent()+1);
     }
 
